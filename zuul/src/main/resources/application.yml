@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: zuul
+
+server:
+  port: 8003
+
+zuul:
+  retryable: false #关闭服务重试
+  add-host-header: true #API网关在进行请求路由转发前为请求设置Host头信息
+  routes:
+    api-user: # 用户
+      sensitive-headers :  #不拦截任何header信息
+      custom-sensitive-headers : true
+      path: /user/**
+      serviceId: user
+    api-blog: # 博客
+      sensitive-headers :  #不拦截任何header信息
+      custom-sensitive-headers : true
+      path: /blog/**
+      serviceId: blog
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
+
+
+
+# Discovery Server Access
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.0.124:8761/eureka
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000

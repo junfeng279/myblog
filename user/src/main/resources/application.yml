@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: user
+  datasource:
+    url: jdbc:h2:file:D:/h2/user;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: sa
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+
+server:
+  port: 8002
+
+
+# Discovery Server Access
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.0.124:8761/eureka
