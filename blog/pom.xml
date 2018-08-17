@@ -131,7 +131,7 @@
 				<groupId>com.spotify</groupId>
 				<artifactId>dockerfile-maven-plugin</artifactId>
 				<version>1.4.0</version>
-				<executions>
+				<!--<executions>
 					<execution>
 						<id>default</id>
 						<goals>
@@ -139,11 +139,12 @@
 							<goal>push</goal>
 						</goals>
 					</execution>
-				</executions>
+				</executions>-->
 				<configuration>
-					<username>junfeng279@sohu.com</username>
+			<!--		<username>junfeng279@sohu.com</username>
 					<password>jf805369@</password>
-					<repository>registry.cn-hangzhou.aliyuncs.com/junfeng279/myblog</repository>
+					<repository>registry.cn-hangzhou.aliyuncs.com/junfeng279/myblog</repository>-->
+					<repository>${docker.image.prefix}/${project.artifactId}</repository>
 					<tag>${project.version}</tag>
 					<!--<useMavenSettingsForAuth>true</useMavenSettingsForAuth>-->
 					<buildArgs>
