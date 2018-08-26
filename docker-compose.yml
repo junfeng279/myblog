@@ -32,6 +32,22 @@ services:
       restart_policy:
         condition: on-failure
 
+  blog:
+    image: registry.cn-hangzhou.aliyuncs.com/junfeng279/myblog:blog-0.0.1-SNAPSHOT
+    ports:
+    - 8001:8001
+    networks:
+    - springcloud-overlay
+    depends_on:
+    - discovery
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+
   zuul:
     image: registry.cn-hangzhou.aliyuncs.com/junfeng279/myblog:zuul-0.0.1-SNAPSHOT
     ports:
