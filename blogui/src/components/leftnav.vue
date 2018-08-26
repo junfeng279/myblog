@@ -22,6 +22,9 @@
         this.selected = flag;
         this.$router.push({ name: flag });
       }
+    },
+    created: function(){
+      this.selected = this.$route.query.selected;
     }
   }
 </script>

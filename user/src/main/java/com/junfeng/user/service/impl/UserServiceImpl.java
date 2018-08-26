@@ -1,16 +1,15 @@
 package com.junfeng.user.service.impl;
 
+import cn.hutool.core.util.ObjectUtil;
 import com.junfeng.user.bean.ResultBean;
 import com.junfeng.user.model.User;
 import com.junfeng.user.repository.UserRepository;
 import com.junfeng.user.service.UserService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 
 /**
  * @Author junfeng
@@ -44,6 +43,20 @@ public class UserServiceImpl implements UserService {
         userRepository.findAll(pageable);
         Page<User> res = userRepository.findAll(pageable);
         resultBean.setData(res);
+        resultBean.setSuccess(true);
+        return resultBean;
+    }
+
+    @Override
+    public ResultBean<User> login(User user) {
+        ResultBean<User> resultBean = new ResultBean<>();
+        if(ObjectUtil.isNull(user)){
+            resultBean.setSuccess(false);
+            return resultBean;
+        }
+        Example<User> example = Example.of(user);
+        Optional<User> user1 = userRepository.findOne(example);
+        resultBean.setData(user1.get());
         resultBean.setSuccess(true);
         return resultBean;
     }

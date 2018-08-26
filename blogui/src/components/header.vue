@@ -1,10 +1,17 @@
 <template>
   <nav class="navbar navbar-default nav-color">
-    <div class="container-fluid">
+    <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" v-on:click="toHome">
+        <a class="navbar-brand pointerStyle " v-on:click="toHome">
           <span class="glyphicon glyphicon-home"></span> Blog
         </a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li>
+            <a v-on:click="toHome" class="pointerStyle">文章列表</a>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -23,6 +30,9 @@
     background: #ffffff;
   }
   .navbar-brand{
+    cursor: pointer;
+  }
+  .pointerStyle{
     cursor: pointer;
   }
 </style>

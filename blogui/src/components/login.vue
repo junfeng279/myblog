@@ -9,13 +9,13 @@
               <div class="form-group">
                 <label for="username" class="col-md-2 control-label">用户名：</label>
                 <div class="col-md-10">
-                  <input type="text" class="form-control" id="username" placeholder="请输入用户名"/>
+                  <input type="text" class="form-control" id="username" placeholder="请输入用户名" v-model="user.username"/>
                 </div>
               </div>
               <div class="form-group">
                 <label for="password" class="col-md-2 control-label">密码：</label>
                 <div class="col-md-10">
-                  <input type="text" class="form-control" id="password" placeholder="请输入用密码"/>
+                  <input type="text" class="form-control" id="password" placeholder="请输入用密码" v-model="user.password"/>
                 </div>
               </div>
               <div class="form-group">
@@ -29,7 +29,7 @@
               </div>
               <div class="form-group">
                 <div class="col-md-11 col-md-offset-1">
-                  <button type="submit" class="btn btn-success">登陆</button>
+                  <button type="submit" class="btn btn-success" v-on:click="submit">登陆</button>
                 </div>
               </div>
             </form>
@@ -40,7 +40,39 @@
   </div>
 </template>
 <script>
-
+  export default {
+    name: "Login",
+    data: function () {
+      return {
+        user: {
+          username: '',
+          password: ''
+        }
+      }
+    },
+    methods: {
+      submit: function () {
+        if (this.user.username === ''){
+          alert("用户名不能为空!");
+          return;
+        }
+        if (this.user.password === ''){
+          alert("密码不能为空!");
+          return;
+        }
+        const _this = this;
+        const url = '/user/user/login';
+        const param = this.user;
+        this.$api.post(url, param, r => {
+          _this.user = r.data;
+          window.localStorage.setItem('user', _this.user);
+          this.$router.push({ name: 'AddUser', query: { selected: 'AddUser' }});
+        }, res => {
+          alert("用户登录失败!");
+        })
+      }
+    }
+  }
 </script>
 <style>
   .login-form{

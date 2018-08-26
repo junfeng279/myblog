@@ -35,4 +35,9 @@ public class UserController {
                                                     @RequestParam("pageSize") Integer pageSize){
         return userService.findAll(page, pageSize);
     }
+
+    @PostMapping("/login")
+    public ResultBean<User> login(@RequestBody User user){
+        return userService.login(user);
+    }
 }

@@ -15,4 +15,6 @@ public interface UserService {
     ResultBean<User> getUserById(Integer uid);
 
     ResultBean<Page<User>> findAll(Integer page, Integer size);
+
+    ResultBean<User> login(User user);
 }

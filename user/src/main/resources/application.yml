@@ -2,7 +2,7 @@ spring:
   application:
     name: user
   datasource:
-    url: jdbc:h2:file:D:/h2/user;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1
+    url: jdbc:h2:file:/tmp/h2/user;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1
     driver-class-name: org.h2.Driver
     username: sa
     password: sa
