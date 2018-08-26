@@ -29,10 +29,10 @@ zuul:
 eureka:
   instance:
     prefer-ip-address: true
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+#    instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     serviceUrl:
-      defaultZone: http://192.168.0.124:8761/eureka
+      defaultZone: http://discovery:8761/eureka
 hystrix:
   command:
     default:

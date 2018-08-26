@@ -1,0 +1,54 @@
+version: '3'
+services:
+  discovery:
+    image: registry.cn-hangzhou.aliyuncs.com/junfeng279/myblog:discovery-0.0.1-SNAPSHOT
+    ports:
+      - 8761:8761
+    networks:
+      springcloud-overlay:
+        aliases:
+          - eureka
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+
+  user:
+    image: registry.cn-hangzhou.aliyuncs.com/junfeng279/myblog:user-0.0.1-SNAPSHOT
+    ports:
+      - 8002:8002
+    networks:
+      - springcloud-overlay
+    depends_on:
+      - discovery
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+
+  zuul:
+    image: registry.cn-hangzhou.aliyuncs.com/junfeng279/myblog:zuul-0.0.1-SNAPSHOT
+    ports:
+      - 8003:8003
+    networks:
+      - springcloud-overlay
+    depends_on:
+      - discovery
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+
+networks:
+  springcloud-overlay:
+    external:
+      name: springcloud-overlay

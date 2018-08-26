@@ -1,7 +1,7 @@
 FROM openjdk:8-jdk-alpine
 VOLUME /tmp
-ADD target/blog-0.0.1-SNAPSHOT.jar app.jar
+ADD target/user-0.0.1-SNAPSHOT.jar app.jar
 RUN sh -c 'touch /app.jar'
 ENV JAVA_OPTS=""
-EXPOSE 8001
+EXPOSE 8002
 ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar" ]
