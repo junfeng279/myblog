@@ -1,5 +1,5 @@
 // 配置API接口地址
-var root = '/apis'
+var root = '';
 // 引用axios
 var axios = require('axios')
 // 自定义判断元素类型JS
