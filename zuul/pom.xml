@@ -69,8 +69,8 @@
 				<artifactId>dockerfile-maven-plugin</artifactId>
 				<version>1.4.0</version>
 				<configuration>
-					<username>junfeng279@sohu.com</username>
-					<password>jf805369@</password>
+					<username>***</username>
+					<password>***</password>
 					<repository>registry.cn-hangzhou.aliyuncs.com/junfeng279/myblog</repository>
 					<tag>${project.name}-${project.version}</tag>
 					<!--<useMavenSettingsForAuth>true</useMavenSettingsForAuth>-->
