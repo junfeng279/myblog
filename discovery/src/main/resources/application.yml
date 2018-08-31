@@ -9,10 +9,10 @@ eureka:
   #配置主机名
   instance:
     hostname: discovery
-#    prefer-ip-address: true
-#    lease-renewal-interval-in-seconds: 5
-#    lease-expiration-duration-in-seconds: 5
-#    instance-id: ${seureka.instance.hostname}:${server.port}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 5
+    instance-id: ${seureka.instance.hostname}:${server.port}
   client:
     #该服务为注册中心，增加此行代表不在注册中心注册自己
     register-with-eureka: false

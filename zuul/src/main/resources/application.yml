@@ -29,8 +29,8 @@ zuul:
 eureka:
   instance:
     hostname: zuul
-#    prefer-ip-address: true
-#    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     serviceUrl:
       defaultZone: http://discovery:8761/eureka
