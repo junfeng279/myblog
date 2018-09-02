@@ -69,7 +69,7 @@
 				<artifactId>dockerfile-maven-plugin</artifactId>
 				<version>1.4.0</version>
 				<configuration>
-					<username>***</username>
+					<username>junfeng279@sohu.com</username>
 					<password>***</password>
 					<repository>registry.cn-hangzhou.aliyuncs.com/junfeng279/myblog</repository>
 					<tag>${project.name}-${project.version}</tag>

@@ -33,7 +33,7 @@ services:
         condition: on-failure
 
   blog:
-    image: registry.cn-hangzhou.aliyuncs.com/junfeng279/myblog:0.0.1-SNAPSHOT
+    image: registry.cn-hangzhou.aliyuncs.com/junfeng279/myblog:blog-0.0.1-SNAPSHOT
     ports:
     - 8001:8001
     networks:
