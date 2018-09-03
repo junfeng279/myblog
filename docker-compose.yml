@@ -1,4 +1,7 @@
 version: '3'
+volumes:
+  db-data:
+
 services:
   discovery:
     image: registry.cn-hangzhou.aliyuncs.com/junfeng279/myblog:discovery-0.0.1-SNAPSHOT
@@ -24,7 +27,12 @@ services:
       - springcloud-overlay
     depends_on:
       - discovery
+    volumes:
+      - db-data:/tmp
     deploy:
+      placement:
+        constraints:
+          - node.role == manager
       replicas: 1
       update_config:
         parallelism: 1
@@ -40,7 +48,12 @@ services:
     - springcloud-overlay
     depends_on:
     - discovery
+    volumes:
+      - db-data:/tmp
     deploy:
+      placement:
+        constraints:
+          - node.role == manager
       replicas: 1
       update_config:
         parallelism: 1
