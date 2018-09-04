@@ -23,14 +23,18 @@ zuul:
     connect-timeout-millis: 10000
     socket-timeout-millis: 60000
 
-
+jwt:
+  header: Authorization
+  secret: mySecret
+  expiration: 604800
+  tokenHead: "Bearer-"
 
 # Discovery Server Access
 eureka:
   instance:
     hostname: zuul
-#    prefer-ip-address: true
-#    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+ #   prefer-ip-address: true
+ #   instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     serviceUrl:
       defaultZone: http://discovery:8761/eureka

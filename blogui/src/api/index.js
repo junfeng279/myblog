@@ -80,3 +80,11 @@ export default {
     return apiAxios('DELETE', url, params, success, failure)
   }
 }
+
+axios.interceptors.request.use(function (config) {
+  //将接口返回的token信息配置到接口请求中
+  config.headers.Authorization = 'Bearer-' + window.localStorage.getItem('token');
+  return config;
+}, function (error) {
+  return Promise.reject(error);
+});
