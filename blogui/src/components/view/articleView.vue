@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="div-shadow">
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="row">
@@ -234,5 +234,19 @@
   .no-border{
     border: 0px solid;
     background-color: transparent;
+  }
+  .div-shadow{
+
+    -webkit-border-radius: 0px;
+
+    -moz-border-radius: 0px;
+
+    border-radius: 0px;
+
+    -webkit-box-shadow: #bbbbbb 0px 0px 5px;
+
+    -moz-box-shadow: #bbbbbb 0px 0px 5px;
+
+    box-shadow: #bbbbbb 0px 0px 5px;
   }
 </style>

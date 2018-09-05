@@ -5,7 +5,7 @@
       <div class="col-md-2">
         <leftnav></leftnav>
       </div>
-      <div class="col-md-10 b-content">
+      <div class="col-md-10">
         <router-view/>
       </div>
     </div>
@@ -27,9 +27,6 @@
   }
 </script>
 <style>
-  .b-content{
-    min-height: 470px;
-  }
   .b-container{
     margin-top: 10px;
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="b-view">
-    <div class="panel panel-default" v-for="(item, index) in blogs">
+    <div class="panel panel-default div-shadow" v-for="(item, index) in blogs">
       <div class="panel-body">
         <div class="row">
           <div class="col-md-12">
@@ -106,5 +106,19 @@
   }
   .article-tags{
     margin-left: 5px;
+  }
+  .div-shadow{
+
+    -webkit-border-radius: 0px;
+
+    -moz-border-radius: 0px;
+
+    border-radius: 0px;
+
+    -webkit-box-shadow: #bbbbbb 0px 0px 5px;
+
+    -moz-box-shadow: #bbbbbb 0px 0px 5px;
+
+    box-shadow: #bbbbbb 0px 0px 5px;
   }
 </style>
