@@ -155,7 +155,7 @@
           // 第二步.将返回的url替换到文本原位置![...](0) -> ![...](url)
           // $vm.$img2Url 详情见本页末尾
           alert(url);
-          this.$refs.md.$img2Url(pos, 'http://127.0.0.1:8003/blog' + url);
+          this.$refs.md.$img2Url(pos, 'http://47.104.197.8:8003/blog' + url);
         }, res => {
           alert("图片保存失败!")
         });
