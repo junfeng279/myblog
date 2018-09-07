@@ -66,7 +66,7 @@
             </div>
           </div>
         </form>
-        <mavon-editor v-model="blog.content" class="b_mavon"/>
+        <mavon-editor ref=md @imgAdd="$imgAdd" @imgDel="$imgDel" v-model="blog.content" class="b_mavon" />
         <div class="divider b_div"></div>
         <div class="form-group col-md-4">
           <label class="col-sm-6">开启评论：</label>
@@ -93,6 +93,7 @@
 <script>
   import Multiselect from 'vue-multiselect'
   import toggle from '../../assets/js/toggles'
+  import {mavonEditor} from 'mavon-editor'
 
   export default {
     name: 'AddBlog',
@@ -144,6 +145,23 @@
       },
       allowFeedData: function(){
         this.blog.allowFeed = !this.blog.allowFeed;
+      },
+      $imgAdd: function(pos, $file){
+        // 第一步.将图片上传到服务器.
+        const formdata = new FormData();
+        formdata.append('file', $file);
+        this.$api.post('blog/blog/content/upload', formdata, r => {
+          const url = r.data;
+          // 第二步.将返回的url替换到文本原位置![...](0) -> ![...](url)
+          // $vm.$img2Url 详情见本页末尾
+          alert(url);
+          this.$refs.md.$img2Url(pos, 'http://127.0.0.1:8003/blog' + url);
+        }, res => {
+          alert("图片保存失败!")
+        });
+      },
+      $imgDel: function (pos) {
+        alert(pos);
       }
     },
     created: function () {
