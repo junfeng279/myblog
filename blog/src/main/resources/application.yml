@@ -17,7 +17,7 @@ spring:
 #    active: dev
 file:
   upload:
-    path: /tmp/upload/img
+    path: /tmp/upload/img/
 
 server:
   port: 8001
