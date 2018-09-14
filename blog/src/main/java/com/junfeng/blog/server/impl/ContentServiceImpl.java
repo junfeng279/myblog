@@ -31,7 +31,7 @@ public class ContentServiceImpl implements ContentService {
     @Override
     public ResultBean<Page<Content>> findAll(Integer page, Integer size) {
         ResultBean<Page<Content>> resultBean = new ResultBean<>();
-        Pageable pageable = PageRequest.of(page, size, Sort.Direction.ASC, "cid");
+        Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC, "cid");
         Page<Content> res = contentRepository.findAll(pageable);
         resultBean.setData(res);
         resultBean.setSuccess(true);

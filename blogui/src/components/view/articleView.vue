@@ -30,7 +30,15 @@
         </div>
         <div class="row">
           <div class="col-md-12 article-content">
-            <mavon-editor :toolbarsFlag="false" :subfield="false" :defaultOpen="preview" :editable="false"  v-bind:value="blog.content"/>
+            <mavon-editor class="md"
+              :value="blog.content"
+              :subfield = "prop.subfield"
+              :defaultOpen = "prop.defaultOpen"
+              :toolbarsFlag = "prop.toolbarsFlag"
+              :editable="prop.editable"
+              :scrollStyle="prop.scrollStyle"
+              :ishljs="prop.ishljs"
+            ></mavon-editor>
           </div>
         </div>
       </div>
@@ -123,7 +131,15 @@
           mail: '',
           content: ''
         },
-        comments: {}
+        comments: {},
+        prop: {
+          subfield: false,// 单双栏模式
+          defaultOpen: 'preview',//edit： 默认展示编辑区域 ， preview： 默认展示预览区域
+          editable: false,
+          toolbarsFlag: false,
+          scrollStyle: true,
+          ishljs: true
+        }
       }
     },
     methods: {
@@ -178,6 +194,12 @@
       convertDate: function (date) {
         const timestamp4 = new Date(date);
         return timestamp4.toLocaleDateString().replace(/\//g, "-") + " " + timestamp4.toTimeString().substr(0, 8);
+      },
+      changeData(value, render) {
+        console.log(render);
+      },
+      covertToHtml: function (status , value) {
+        console.log(value);
       }
     },
     created: function () {

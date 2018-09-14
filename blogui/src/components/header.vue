@@ -2,7 +2,7 @@
   <nav class="navbar navbar-default nav-color div-shadow nav-height">
     <div class="navbar-header">
       <a class="navbar-brand pointerStyle " v-on:click="toHome">
-        <img alt="Myblog" src="../assets/image/avatar.jpg" class="logo">
+        <img alt="Myblog" src="../assets/image/avatars.jpg" class="logo">
         <span class="logo-text">Myblog</span>
       </a>
     </div>
@@ -53,7 +53,7 @@
     box-shadow: 2px 2px 1px #888888;
   }
   .logo{
-    background-image: url("../assets/image/avatar.jpg");
+    background-image: url("../assets/image/avatars.jpg");
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -85,8 +85,8 @@
     margin-left: 20px;
     font-size: 16px;
     display: inline-block;
-    vertical-align: top;
     font-weight: 600;
+    line-height: 40px;
   }
   .navbar-nav{
     height: 70px;

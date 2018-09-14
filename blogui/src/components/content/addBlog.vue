@@ -66,7 +66,7 @@
             </div>
           </div>
         </form>
-        <mavon-editor ref=md @imgAdd="$imgAdd" @imgDel="$imgDel" v-model="blog.content" class="b_mavon" />
+        <mavon-editor ref=md @imgAdd="$imgAdd" @imgDel="$imgDel" v-model="blog.content" :ishljs="true" class="b_mavon"/>
         <div class="divider b_div"></div>
         <div class="form-group col-md-4">
           <label class="col-sm-6">开启评论：</label>
@@ -155,7 +155,7 @@
           // 第二步.将返回的url替换到文本原位置![...](0) -> ![...](url)
           // $vm.$img2Url 详情见本页末尾
           alert(url);
-          this.$refs.md.$img2Url(pos, 'http://47.104.197.8:8003/blog' + url);
+          this.$refs.md.$img2Url(pos, 'http://127.0.0.1:8003/blog' + url);
         }, res => {
           alert("图片保存失败!")
         });
