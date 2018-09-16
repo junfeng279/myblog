@@ -46,14 +46,22 @@
         </span>
       </div>
     </div>
+    <div>
+      <Page :page="page" v-on:searchData="searchPageBlog"></Page>
+    </div>
   </div>
 </template>
 <script>
+  import Page from '../common/page';
   export default {
     name: 'blogView',
     data: function () {
       return {
-        blogs: {}
+        blogs: {},
+        page: {
+          currentPage: 0,
+          totalPage: 0
+        }
       }
     },
     methods: {
@@ -66,6 +74,8 @@
         };
         this.$api.get(url, param, r => {
           _this.blogs = r.data.content;
+          _this.page.currentPage = r.data.pageable.pageNumber + 1;
+          _this.page.totalPage = r.data.totalPages;
           console.log(_this.blogs);
         }, res => {
           alert("文章查询失败!")
@@ -83,7 +93,15 @@
       convertDate: function (date) {
         const timestamp4 = new Date(date);
         return timestamp4.toLocaleDateString().replace(/\//g, "-") + " " + timestamp4.toTimeString().substr(0, 8);
+      },
+      searchPageBlog: function(currentPage){
+        const start = (currentPage - 1) * 20;
+        const limit = 20;
+        this.searchBlogs(start, limit);
       }
+    },
+    components: {
+      Page
     },
     created: function () {
       this.searchBlogs(0, 20);
