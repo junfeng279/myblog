@@ -34,7 +34,7 @@ public class ArticleViewController {
     }
 
 
-    @PostMapping
+    @PostMapping("/comment")
     public ResultBean<Comment> save(@RequestBody Comment comment){
         return commentService.save(comment);
     }
