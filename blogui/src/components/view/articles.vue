@@ -95,7 +95,7 @@
         return timestamp4.toLocaleDateString().replace(/\//g, "-") + " " + timestamp4.toTimeString().substr(0, 8);
       },
       searchPageBlog: function(currentPage){
-        const start = (currentPage - 1) * 20;
+        const start = currentPage;
         const limit = 20;
         this.searchBlogs(start, limit);
       }

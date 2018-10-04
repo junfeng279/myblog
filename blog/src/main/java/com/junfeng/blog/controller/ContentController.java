@@ -1,6 +1,5 @@
 package com.junfeng.blog.controller;
 
-import cn.hutool.core.io.FileUtil;
 import com.junfeng.blog.bean.ResultBean;
 import com.junfeng.blog.model.Content;
 import com.junfeng.blog.server.ContentService;
