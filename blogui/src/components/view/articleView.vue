@@ -145,7 +145,7 @@
     methods: {
       getBlogById: function (cid) {
         const _this = this;
-        const url = '/blog/blog/content/' + cid;
+        const url = '/blog/blog/view/content/' + cid;
         const param = {};
         this.$api.get(url, param, r => {
           _this.blog = r.data;
@@ -168,7 +168,7 @@
       saveComment: function () {
         const _this = this;
         this.comment.cid = this.blog.cid;
-        const url = '/blog/blog/comment';
+        const url = '/blog/blog/view/content/comment';
         const param = this.comment;
         this.$api.post(url, param, r => {
           _this.user = r.data;
@@ -180,7 +180,7 @@
       },
       getComments: function (cid, start, limit) {
         const _this = this;
-        const url = '/blog/blog/comment/content/'+cid;
+        const url = '/blog/blog/view/content/comment/'+cid;
         const param = {
           page: start,
           pageSize: limit

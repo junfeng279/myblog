@@ -67,7 +67,7 @@
     methods: {
       searchBlogs: function (start, limit) {
         const _this = this;
-        const url = '/blog/blog/content';
+        const url = '/blog/blog/view/content';
         const param = {
           page: start,
           pageSize: limit
@@ -95,7 +95,7 @@
         return timestamp4.toLocaleDateString().replace(/\//g, "-") + " " + timestamp4.toTimeString().substr(0, 8);
       },
       searchPageBlog: function(currentPage){
-        const start = currentPage;
+        const start = currentPage-1;
         const limit = 20;
         this.searchBlogs(start, limit);
       }
